@@ -1,0 +1,1 @@
+<input class="text-xs outline-none p-2 rounded-sm border-zinc-300 border bg-zinc-100" type="{{ $type }}" name="{{ $name }}" id="{{ $id }}" placeholder="{{ $placeholder }}" {{ $attributes }} aria-label="{{ $ariaLabel }}">
