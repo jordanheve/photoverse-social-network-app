@@ -1,23 +1,19 @@
 @extends('app')
 
 @section('content')
-<div class="grid grid-cols-2 items-center">
-    <div>   
-        <img src="" alt="capture the moment">
+<div class="flex justify-center items-center gap-10">
+    <div class="max-w-md">   
+        <img src="/img/login-img.jpg" alt="capture the moment">
     </div>
     <!--register form-->
-    <div>
+    <div class="max-w-md w-full">
         <div class="border p-6 max-w-md">
-            <h1 class="text-4xl font-extralight italic">Photoverse</h1>
-            <form action="" class="flex flex-col">
-                 
-                <input class="outline-none" type="text" placeholder="Phone, user, or email">
-                <input class="outline-none" type="password" name="" id="" placeholder="Password">
-                <button class="bg-blue-400 text-white font-semibold" type="submit">Log In</button>
-            </form>
+            <h1 class="text-4xl mb-10 font-extralight italic text-center">Photoverse</h1>
+           <livewire:login-form/>
+           <p class="text-center text-xs">Forgot password?</p>
         </div>
-        <div>
-            
+        <div class="border p-6 mt-3 text-center gap-4 justify-center items-center">
+            <p class="text-sm">Don't have an account? <a href="{{route('sign-up')}}" class="text-sky-500 font-semibold">Sign up</a></p>
         </div>
         
     </div>

@@ -10,9 +10,11 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
         @vite('resources/css/app.css')
+        @livewireStyles
     </head>
     <body class="antialiased bg-zinc-50 min-h-screen flex flex-col justify-between">
         <header>
+            @yield('header')
         </header>
         @yield('content')
 
@@ -20,5 +22,6 @@
                 <footer class="text-center text-xs">
                     {{now()->year}} Photoverse by <a href="">JordanHeve</a>
                 </footer>
+        @livewireScripts
     </body>
 </html>
