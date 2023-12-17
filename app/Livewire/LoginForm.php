@@ -10,6 +10,7 @@ class LoginForm extends Component
 {   public $errorMessage;
     public $loginInput;
     public $password;
+    public $remember;
     public function render()
     {
         return view('livewire.login-form');
@@ -22,7 +23,7 @@ class LoginForm extends Component
        $user = \App\Models\User::where($field, $this->loginInput)->first();
 
        if ($user && Hash::check($this->password, $user->password)) {
-           Auth::login($user);
+           Auth::login($user, $this->remember);
            return redirect()->intended(route('feed')); 
        } else {
         $this->errorMessage = 'Invalid credentials. Please check your information.';
