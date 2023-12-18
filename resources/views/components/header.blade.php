@@ -19,4 +19,7 @@
     <span class="text-slate-700 font-semibold">
          {{auth()->user()->username}}
     </span>
+    <span class="flex gap-2 items-center text-sm border border-slate-600 p-1 rounded">Create
+        <x-heroicon-m-camera  class=" h-5" />
+    </span>
 </nav>

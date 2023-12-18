@@ -5,7 +5,10 @@ use App\Http\Controllers\FeedControler;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserviewController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,3 +34,7 @@ Route::middleware('guest')->group(function () {
 Route::get('/home', [FeedControler::class, 'index'])->name('feed');
 
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
+
+Route::get('/{user:username}', [UserviewController::class, 'index'])->name('user.index');
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+
