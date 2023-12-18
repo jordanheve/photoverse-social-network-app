@@ -3,15 +3,18 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class CreatePost extends Component
 {
+    use WithFileUploads;
     public $title; 
     public $description;
-
+ 
+    public $image;
     public function store()
     {
-        $files = request()->file('filepond');
+        
     }
 
     public function render()

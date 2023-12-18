@@ -2,17 +2,7 @@
     <div class="w-96">
 
         
-        <div 
-       
-        x-data 
-        x-init='
-        
-        FilePond.create($refs.input)
-        
-        ' 
-        wire:ignore>
-        <input type="file" x-ref='input' name="csv" class="filepond">
-    </div>
+        <x-filepond wire:model='image'/>
     
 </div>
 
