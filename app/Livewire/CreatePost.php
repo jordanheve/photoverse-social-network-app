@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Illuminate\Support\Facades\Storage;
 use App\Models\Post;
 use Livewire\Component;
 use Illuminate\Support\Str;
@@ -17,15 +18,30 @@ class CreatePost extends Component
     public $rules = [
         'image' => 'required|image|max:10000',
         'title' => 'required| max:255',
-        'description' => 'required|max255'
+        'description' => 'required|max:255'
     ];
+    // File is an image that is < 10mb
 
     public function store()
     {
-        $uniqueFileName = Str::uuid()->toString() . '.' . $this->image->getClientOriginalExtension();
-        dd($uniqueFileName);
+        
+
         $this->validate();
-        // File is an image that is < 10mb
+
+        $user_id = auth()->id();
+
+        // Carpeta donde se almacenarán los archivos basados en el user_id
+        $userFolder = 'public/uploads/' . $user_id;
+
+        // Verificar si la carpeta existe, si no, crearla
+        if (!Storage::exists($userFolder)) {
+            Storage::makeDirectory($userFolder);
+        }
+
+
+        $uniqueFileName = Str::uuid()->toString() . '.' . $this->image->getClientOriginalExtension();
+        
+        $filePath = $this->image->storeAs($userFolder, $uniqueFileName);
 
         // Validation Here
  
@@ -33,17 +49,15 @@ class CreatePost extends Component
         $post = Post::create([
             'title'=> $this->title,
             'description' => $this->description,
-            'image'=> $uniqueFileName,
+            'image'=> $filePath,
+            'user_id'=> auth()->user()->id,
 
         ]);
  
-        // Add the file to the collection
-        $post->addMedia($this->image->getRealPath())
-        ->usingFileName($uniqueFileName)
-        ->toMediaCollection('image');
  
         // Redirect or send back success message
 
+        return redirect()->route('user.index', auth()->user()->username);
     }
 
     public function render()
