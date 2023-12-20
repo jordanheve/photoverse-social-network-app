@@ -29,11 +29,16 @@
             </div>
         
                 
-                <textarea 
-                wire:model='description'
-                class="resize-none w-full text-xs outline-none p-2 rounded-sm border-zinc-300 border bg-zinc-100" 
-                placeholder="Description" id="description"  rows="3"></textarea>
+           
                 
+            <x-custom-textarea
+            name="description" 
+            id="description" 
+            placeholder="Description" 
+            ariaLabel="Description"
+            required
+            />
+
                 @error('description')
                 <x-alert-message >
                     {{$message}}

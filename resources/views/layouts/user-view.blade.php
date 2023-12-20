@@ -42,7 +42,7 @@
             @foreach($posts as $post)
 
 
-            <a class="" href="/home">
+            <a class="" href="{{route('user.show', ['user' => $user, 'post' => $post])}}">
             <figure class="rounded-lg relative max-w-sm w-72 h-72 overflow-hidden transition-all duration-300 cursor-pointer group">
                 <div class="relative h-full">
                   <div class='bg-gradient-to-t from-black opacity-50 to-30% h-full w-full absolute z-10'></div>

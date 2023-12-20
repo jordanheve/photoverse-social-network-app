@@ -14,7 +14,7 @@
         id="{{ $id }}" 
         placeholder="{{ $placeholder }}" 
         aria-label="{{ $ariaLabel }}"
-        {{ $attributes }} {{-- Esto permite agregar otros atributos que puedan pasarse --}}
+        {{ $attributes }}
     >
     
 </div>

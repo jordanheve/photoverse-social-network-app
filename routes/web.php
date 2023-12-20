@@ -26,9 +26,7 @@ Route::redirect('/', '/home');
 
 Route::middleware('guest')->group(function () {  
     Route::get('/sign-up', [RegisterController::class, 'index'])->name('sign-up');
-    Route::post('/sign-up', [RegisterController::class, 'store']);
     Route::get('/login', [LoginController::class, 'index'])->name('login');
-    Route::post('/login', [LoginController::class, 'store']);
 });
 
 Route::get('/home', [FeedControler::class, 'index'])->name('feed');
@@ -38,5 +36,7 @@ Route::get('/{user:username}', [UserviewController::class, 'index'])->name('user
 
 Route::middleware('auth')->group(function (){
     Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
-
+    Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy') ;
 });
+
+Route::get('{user:username}/{post}',  [UserviewController::class, 'show']) -> name ('user.show');

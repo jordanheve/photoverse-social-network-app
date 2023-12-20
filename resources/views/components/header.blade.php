@@ -7,7 +7,7 @@
                 <x-heroicon-o-bars-3 class=" h-8" />
             </button>
         </x-slot>
-        <div class="absolute">
+        <div class="absolute opacity-0" id="menu">
 
             <a href="#">Profile</a>
             <a href="#">
@@ -26,6 +26,14 @@
             <x-heroicon-m-camera  class=" h-5" />
         </span>
     </a>
+    <script>
+    
+        setTimeout(() => {
+            document.querySelector('#menu').classList.remove('opacity-0');
+        }, 500);
+    
+</script>
+
     @endauth
 
     @guest
