@@ -14,11 +14,19 @@
         <div class="md:w-1/2 ">
             <img class="rounded" src="{{asset('storage').'/uploads'.'/'.$user->id.'/'.$post->image}}" alt="">
             
-            <div class="text-sm">
-                likes
-            </div>
             
-            <div>
+            
+            <div class="flex flex-col m-4 gap-2">
+                <div class="flex justify-between">
+
+                    <livewire:likes :post='$post'  />
+
+                    @auth
+                    @if($post->user_id === auth()->id())
+                    <x-delete-post :post="$post" />
+                    @endif
+                    @endauth
+                </div>
                 <a href="{{route('user.index',  $post->user)}}">
 
                     <p class="font-semibold">
@@ -32,11 +40,7 @@
                 <p>
                     {{$post->description}}
                 </p>
-                @auth
-                @if($post->user_id === auth()->id())
-                <x-delete-post :post="$post" />
-                @endif
-                @endauth
+               
             </div>
         </div>
         
