@@ -1,4 +1,6 @@
 <nav class='border-b  h-14 shadow-sm px-4 flex  gap-4 items-center'>
+    
+    @auth
     <x-dropdown class="text-slate-600 relative -mb-2">
         <x-slot name="trigger">
             <button aria-label="dropdown menu">
@@ -19,7 +21,14 @@
     <span class="text-slate-700 font-semibold">
          {{auth()->user()->username}}
     </span>
-    <span class="flex gap-2 items-center text-sm border border-slate-600 p-1 rounded">Create
-        <x-heroicon-m-camera  class=" h-5" />
-    </span>
+    <a href="{{route('posts.create')}}">
+        <span class="flex gap-2 items-center text-sm border border-slate-600 p-1 rounded">Create
+            <x-heroicon-m-camera  class=" h-5" />
+        </span>
+    </a>
+    @endauth
+
+    @guest
+        Registarse    
+    @endguest
 </nav>

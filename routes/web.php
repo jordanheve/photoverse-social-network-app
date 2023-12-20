@@ -32,9 +32,11 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::get('/home', [FeedControler::class, 'index'])->name('feed');
-
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
 Route::get('/{user:username}', [UserviewController::class, 'index'])->name('user.index');
-Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 
+Route::middleware('auth')->group(function (){
+    Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+
+});

@@ -24,4 +24,9 @@ class Post extends Model
             ->singleFile()
             ->acceptsMimeTypes(['image/jpg', 'image/jpeg', 'image/png', 'image/gif']);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class)->select(['name', 'username']);
+    }
 }
