@@ -28,8 +28,16 @@
                 <p>descripcion</p>
             </div>
 
-        </div>
+            
 
+        </div>
+        @auth
+        @if($user->id===auth()->id())
+            <a href="{{route('edit.index')}}" title="edit profile">
+                <x-heroicon-s-pencil-square class="text-slate-500 h-5" />
+            </a>
+        @endif
+    @endauth
        
     </div>
 

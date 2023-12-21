@@ -17,10 +17,12 @@
             <x-logout action="{{route('logout')}}" class="text-gray-500" />
         </div>
     </x-dropdown>
-    
-    <span class="text-slate-700 font-semibold">
-         {{auth()->user()->username}}
-    </span>
+    <a href="{{route('user.index', auth()->user())}}">
+
+        <span class="text-slate-700 font-semibold">
+            {{auth()->user()->username}}
+        </span>
+    </a>
     <a href="{{route('posts.create')}}">
         <span class="flex gap-2 items-center text-sm border border-slate-600 p-1 rounded">Create
             <x-heroicon-m-camera  class=" h-5" />

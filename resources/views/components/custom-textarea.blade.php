@@ -3,6 +3,7 @@
     'id',
     'placeholder',
     'ariaLabel',
+    'value'=>""
 ])
 
 <div class="w-full">
@@ -15,7 +16,8 @@
             placeholder="{{$placeholder}}" 
             aria-label={{$ariaLabel}}
             rows="3"
-    ></textarea>
+            
+    >{{$value}}</textarea>
     
 </div>
 

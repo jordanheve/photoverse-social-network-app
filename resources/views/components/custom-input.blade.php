@@ -4,6 +4,8 @@
     'id',
     'placeholder',
     'ariaLabel',
+    'attributes'=>"",
+    'value'=>""
 ])
 
 <div class="w-full">
@@ -15,6 +17,7 @@
         placeholder="{{ $placeholder }}" 
         aria-label="{{ $ariaLabel }}"
         {{ $attributes }}
+        value="{{$value}}"
     >
     
 </div>

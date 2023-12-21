@@ -4,6 +4,7 @@ namespace App\Livewire;
 use App\Models\User;
 use Livewire\Component;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterForm extends Component
@@ -39,15 +40,18 @@ class RegisterForm extends Component
     {
         $this->validate();
 
-        User::create([
+       $user = User::create([
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,
             'username' => Str::lower($this->username),
             'password' => Hash::make($this->password),
+            'description' => '',
         ]);
- 
-        
+
+        Auth::login($user);
+
+        return redirect(route('user.index', $this->username));
  
     }
 }

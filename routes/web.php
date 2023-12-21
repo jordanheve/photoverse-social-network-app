@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\EditProfileController;
 use App\Http\Controllers\FeedControler;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -32,11 +32,12 @@ Route::middleware('guest')->group(function () {
 Route::get('/home', [FeedControler::class, 'index'])->name('feed');
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
-Route::get('/{user:username}', [UserviewController::class, 'index'])->name('user.index');
 
 Route::middleware('auth')->group(function (){
+    Route::get('/edit-profile', [EditProfileController::class, 'index'])->name('edit.index');
     Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
     Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy') ;
 });
 
 Route::get('{user:username}/{post}',  [UserviewController::class, 'show']) -> name ('user.show');
+Route::get('/{user:username}', [UserviewController::class, 'index'])->name('user.index');
