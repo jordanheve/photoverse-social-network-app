@@ -26,6 +26,7 @@ class RegisterForm extends Component
             'min:6',
             'unique:users',
             'no_spaces', 
+            'not_in:edit-profile,post, posts, /, create, logout, home, sign-up, /posts/create'
         ],
         'password' => 'required|min:8',
         'password_confirmation' => 'same:password',
@@ -46,7 +47,7 @@ class RegisterForm extends Component
             'phone' => $this->phone,
             'username' => Str::lower($this->username),
             'password' => Hash::make($this->password),
-            'description' => '',
+            
         ]);
 
         Auth::login($user);
