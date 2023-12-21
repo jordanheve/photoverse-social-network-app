@@ -7,8 +7,12 @@
             
             <p>Current profile picture</p>
 
-
-
+            @if (auth()->user()->image)
+                
+            <img class="rounded-full h-40 w-40 object-cover mx-auto" src="{{asset('storage').'/uploads'.'/'.auth()->id().'/'.'profile/'.auth()->user()->image}}" alt="profile picture">
+            @else
+            <img src="/img/profile-picture.png" class="rounded-full objet-cover h-40 w-40" alt="profile picture">
+            @endif
             <p>update</p>
             <x-filepond wire:model='image'/>
             @error('image')

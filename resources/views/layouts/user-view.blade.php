@@ -8,29 +8,19 @@
 <div class='flex-grow flex-col flex items-center' >
     <div class="flex gap-4 p-4">
         
-        <div class=" h-28 w-28">
+        <div class="h-28 w-28">
             <!--user img-->
-            <img src="/img/profile-picture.png" class="rounded-full objet-cover" alt="">
+            @if ($user->image)
+                <img class="h-full w-full rounded-full object-cover mx-auto" src="{{asset('storage').'/uploads'.'/'.$user->id.'/'.'profile/'.$user->image}}" alt="profile picture">
+            @else
+
+            <img src="/img/profile-picture.png" class="rounded-full objet-cover" alt="profile picture">
+            @endif
+
         </div>
         <!--user data-->
-        <div>
-            <div>
-                <p class="font-semibold">{{$user->username}}</p>
-            </div>
+        <livewire:user-stats :postCount="$posts->count()" :user="$user"/>
 
-            <div>
-                <span> posts</span>
-                <span> follower</span>
-                <span> following</span>
-            </div>
-            <div>
-                <p>{{$user->name}}</p>
-                <p>descripcion</p>
-            </div>
-
-            
-
-        </div>
         @auth
         @if($user->id===auth()->id())
             <a href="{{route('edit.index')}}" title="edit profile">
@@ -43,10 +33,13 @@
 
     
     <section class="max-w-7xl">
+
         @if($posts->count())
 
         <h2>Publicaciones</h2>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+
+
             @foreach($posts as $post)
 
 

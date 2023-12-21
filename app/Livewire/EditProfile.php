@@ -23,7 +23,7 @@ class EditProfile extends Component
     protected function rules()
     {
         return [
-            'name' => 'required|min:6',
+            'name' => 'required|min:6|max:24',
             'username' => [
                 'required',
                 Rule::unique('users', 'username')->ignore(Auth::id()),
@@ -33,6 +33,7 @@ class EditProfile extends Component
                 'not_in:edit-profile,post, posts, /, create, logout, home, sign-up, /posts/create'
             ],  
             'image' => 'nullable|image|max:10000',
+            'description' => 'max:140'
         ];
     }
 
