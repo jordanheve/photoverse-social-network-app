@@ -13,7 +13,7 @@ public $user;
     public $postCount;
     public $userFind;
     public $follower_id;
-
+    protected $listeners = ['updateFollowersCount' => 'updateFollowersCount'];
     public function render()
     {
         return view('livewire.user-stats');
@@ -31,7 +31,8 @@ public $user;
     }
 
     public function store()
-    {
+    {   
+        dd($this->userFind);
         $this->userFind->followers()->attach($this->follower_id);
         $this->updateFollowersCount();
         
@@ -46,6 +47,7 @@ public $user;
     private function updateFollowersCount()
     {
         $this->followersCount = $this->userFind->followers()->count();
+        $this->dispatch('refreshFollowers');
     }
 
 
