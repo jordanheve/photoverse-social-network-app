@@ -44,7 +44,7 @@
         number="{{$postCount}}"
         name="{{($postCount === 1) ? 'Post' : 'Posts';}}"
         />
-        <x-dropdown >
+        <x-dropdown class="z-100">
            
             <x-slot name='trigger'>
                 <button>
@@ -55,24 +55,37 @@
                 </button>
             </x-slot>
 
-            <div x-cloak class="  absolute top-1/2 -translate-y-1/2 translate-x-1/2 right-1/2 modal bg-zinc-50 border rounded-lg shadow-lg w-96 ">
+            <div x-cloak class="  absolute top-1/2 -translate-y-1/2 translate-x-1/2 right-1/2 modal z-50  bg-zinc-50 border rounded-lg shadow-lg w-96 ">
                 <div class="relative flex flex-col  border-b h-10">
                     <button @click='open = false'>
                         <x-heroicon-s-x-mark class="h-6 absolute top-2 right-2" />
                     </button>
-                    <p class="text-center font-bold my-auto" >Followers</p>
-                </div>
+                    <p class="text-center font-bold my-auto" >Followers</p> 
+                </div >
                 <livewire:followers-view :userId="$user->id"/>
             </div>
         </x-dropdown>
 
         <x-dropdown>
             <x-slot name='trigger'>
-                <x-stats-info 
-                number="{{$followingCount}}"
-                name="Following"
-                />
+                <button>
+
+                    <x-stats-info 
+                    number="{{$followingCount}}"
+                    name="Following"
+                    />
+                </button>
             </x-slot>
+
+            <div x-cloak class="  absolute top-1/2 -translate-y-1/2 translate-x-1/2 right-1/2 modal z-50  bg-zinc-50 border rounded-lg shadow-lg w-96 ">
+                <div class="relative flex flex-col  border-b h-10">
+                    <button @click='open = false'>
+                        <x-heroicon-s-x-mark class="h-6 absolute top-2 right-2" />
+                    </button>
+                    <p class="text-center font-bold my-auto" >Following</p> 
+                </div >
+                <livewire:following-view :userId="$user->id"/>
+            </div>
         </x-dropdown>
         
        

@@ -35,12 +35,21 @@ class FollowersView extends Component
 
 
     public function store($follower_id)
-    {
-   
+    {   
+        
+        if(auth()->id() === $this->user->id)
+        { 
+            $this->dispatch('updateFollowingsCount');
+        }
         User::find($follower_id)->followers()->attach(auth()->id());
     }
     public function delete($follower_id)
     {
+        if(auth()->id()=== $this->user->id)
+        { 
+            $this->dispatch('updateFollowingsCount');
+        }
+
         User::find($follower_id)->followers()->detach(auth()->id());
        
     }
