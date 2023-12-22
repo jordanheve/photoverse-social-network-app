@@ -7,10 +7,18 @@
                 <x-heroicon-o-bars-3 class=" h-8" />
             </button>
         </x-slot>
-        <div class="absolute opacity-0" id="menu">
-
+        <div x-cloak class="absolute w-32 p-4 bg-zinc-50 shadow" id="menu">
+            <a  href="#">
+               <p class="border-b">
+                   Home
+               </p>
+            </a>
             <a href="#">Profile</a>
-            <a href="#">
+            <a href="#" class="flex items-center">
+                <x-heroicon-m-cog-6-tooth class="h-4 inline-block" />
+                Edit profile
+            </a>
+            <a href="#" class="flex items-center">
                 <x-heroicon-m-cog-6-tooth class="h-4 inline-block" />
                 Settings
             </a>
@@ -28,13 +36,6 @@
             <x-heroicon-m-camera  class=" h-5" />
         </span>
     </a>
-    <script>
-    
-        setTimeout(() => {
-            document.querySelector('#menu').classList.remove('opacity-0');
-        }, 500);
-    
-</script>
 
     @endauth
 
