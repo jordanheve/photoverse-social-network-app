@@ -12,6 +12,7 @@
                <p class="border-b">
                    Home
                </p>
+                   
             </a>
             <a href="#">Profile</a>
             <a href="#" class="flex items-center">
@@ -36,7 +37,7 @@
             <x-heroicon-m-camera  class=" h-5" />
         </span>
     </a>
-
+    <livewire:user-search   />  
     @endauth
 
     @guest

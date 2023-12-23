@@ -10,7 +10,7 @@
         <x-heroicon-o-trash  class="text-slate-500 h-5" title="Delete this post"/>
     </button>
     </x-slot>    
-    <div id='delete' class="absolute bg-white border border-slate-800 bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 p-8 opacity-0">
+    <div x-cloak id='delete' class="absolute bg-white border border-slate-800 bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 p-8">
         <p>Are you sure want to delete the post?  </p>
         <div class="flex justify-evenly">
 
@@ -25,10 +25,3 @@
     </div>
 </x-dropdown>
 
-<script>
-    
-        setTimeout(() => {
-            document.querySelector('#delete').classList.remove('opacity-0');
-        }, 500);
-    
-</script>

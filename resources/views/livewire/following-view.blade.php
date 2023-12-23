@@ -4,27 +4,10 @@
     
         @foreach($followings as $following)
 
-            <div class="flex gap-4 ">
-                <div>
-                    @if($following->image)
-
-                    <img class="rounded-full h-12 w-12 object-cover" src="{{asset('storage').'/uploads'.'/'.$following->id.'/'.'profile/'.$following->image}}" alt="{{'user '.$following->username.' profile picture'}}">
-                    @else
-                    <img src="/img/profile-picture.png" class="rounded-full objet-cover h-12 w-12" alt="profile picture">
-                    @endif
-                </div>
-                <div class="flex items-center flex-grow justify-between">
-                    <div>
-
-                        <p class="font-semibold text-zinc-700">
-                            {{$following->username}}
-                        </p>
-                        <p class="-mt-1 text-zinc-500 text-sm">
-                            {{ $following->name }}
-                        </p>
-                        
-                    </div>
-                       
+           
+            <div class="flex items-center flex-grow justify-between">
+                <x-user-preview :user="$following"/>
+                    
               @auth
                   
               @if($following->id !== auth()->id())
@@ -60,7 +43,6 @@
                 
                 @endauth          
             </div>
-        </div>
         @endforeach
     
     @else

@@ -40,6 +40,7 @@ class FollowersView extends Component
         if(auth()->id() === $this->user->id)
         { 
             $this->dispatch('updateFollowingsCount');
+            $this->dispatch('refreshFollowings');
         }
         User::find($follower_id)->followers()->attach(auth()->id());
     }
@@ -48,6 +49,7 @@ class FollowersView extends Component
         if(auth()->id()=== $this->user->id)
         { 
             $this->dispatch('updateFollowingsCount');
+            $this->dispatch('refreshFollowings');
         }
 
         User::find($follower_id)->followers()->detach(auth()->id());

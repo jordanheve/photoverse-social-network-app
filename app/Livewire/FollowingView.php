@@ -10,6 +10,13 @@ class FollowingView extends Component
     use WithPagination;
     public $user;
     
+    protected $listeners = ['refreshFollowings' => 'refreshFollowings'];
+
+    public function refreshFollwings()
+    {
+        $this->user = User::findOrFail($this->user->id);
+    }
+
     public function mount($userId)
     {
         $this->user = User::findOrFail($userId);
