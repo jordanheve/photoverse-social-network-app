@@ -24,6 +24,5 @@
                     {{now()->year}} Photoverse by <a href="">JordanHeve</a>
                 </footer>
         @livewireScripts
-        
     </body>
 </html>

@@ -123,4 +123,8 @@ return [
         ],
     ],
 
+    'resend' => [
+        'password' => 'resend',
+    ]
+
 ];

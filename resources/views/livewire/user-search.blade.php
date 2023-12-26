@@ -1,4 +1,4 @@
-<div class="relative">
+<div class="relative z-50">
     <x-dropdown>
         <x-slot name='trigger'>
             <button class="flex"><x-heroicon-o-magnifying-glass class="h-5"/></button>

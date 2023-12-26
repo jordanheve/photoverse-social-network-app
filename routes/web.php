@@ -9,6 +9,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserviewController;
+use App\Http\Controllers\ForgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,5 +42,6 @@ Route::middleware('auth')->group(function (){
     Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy') ;
 });
 
+Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name('forgot-password.index');
 Route::get('{user:username}/{post}',  [UserviewController::class, 'show']) -> name ('user.show');
 Route::get('/{user:username}', [UserviewController::class, 'index'])->name('user.index');
