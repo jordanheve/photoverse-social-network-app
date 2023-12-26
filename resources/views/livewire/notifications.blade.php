@@ -1,8 +1,13 @@
-<div>
-    <x-dropdown>
+<div >
+    <x-dropdown >
         <x-slot name='trigger'>
-            <button aria-label="notifications" title="notifications">
-                <x-heroicon-o-bell class="h-5"/>
+            <button wire:click="markAsRead" aria-label="notifications" title="notifications" class="relative mt-1 pt-0.5">
+                <x-heroicon-o-bell class="h-6"/>
+                @if ($unreadNotificationsCount)
+                <span  class="bg-red-500 rounded-full text-xs px-1 text-zinc-50 absolute top-0 font-semibold">
+                    {{$unreadNotificationsCount}}
+                </span>
+                @endif
             </button>
         </x-slot>
         <div x-cloak class="absolute bg-zinc-50 shadow-md p-2 z-50">
@@ -57,10 +62,18 @@
 
                     </a>
                 </div>
+
                 @endif
-            @empty
+                @empty
                 No hay notificaciones que mostrar
-            @endforelse
+                @endforelse
+                @if ($notifications->count())
+                <form wire:submit.prevent="destroy" class="flex justify-center" method="POST">
+                    @method("DELETE")
+                    <button type='submit' class="text-sky-600 font-semibold hover:underline">Clear all</button>
+                </form>
+                    
+                @endif
         </div>
     </x-dropdown>
 </div>

@@ -12,7 +12,6 @@ class Comments extends Component
     use WithPagination;
 
     public $comment;
-    public $user_id;
     public $post;
 
     public function render()
@@ -34,40 +33,43 @@ class Comments extends Component
 
     public function store()
     {
+        $user_id = auth()->id();
 
          //store comment notification
+        if($this->post->user_id !== $user_id){
 
-         $existingNotification = Notification::where('type', 'comment')
-         ->where('user_id', $this->post->user_id)
-         ->first();
- 
- 
-         if($existingNotification)
-         {
-             $existingNotification->data = json_encode([
-                     "post_id" => "$this->post->id",
-                     
-                     "message" => auth()->user()->username."and some others commented your post: ".$this->post->title,
-                 ]);
-             $existingNotification->save();
-         } else {
-             Notification::create([
-                 'user_id' => $this->post->user_id,
-                 'type' => 'comment',
-                 'data' => json_encode(
- 
-                     [
-                         'post_id' => $this->post->id,
-                         "message" => auth()->user()->username." commented your post: ".$this->post->title,
-                     ]
-                 ),
-                 'read_at' => null,
-             ]);
-         }
+            
+            $existingNotification = Notification::where('type', 'comment')
+            ->where('user_id', $this->post->user_id)
+            ->first();
+            
+            
+            if($existingNotification)
+            {
+                $existingNotification->data = json_encode([
+                    "post_id" => "$this->post->id",
+                    
+                    "message" => auth()->user()->username."and some others commented your post: ".$this->post->title,
+                ]);
+                $existingNotification->save();
+            } else {
+                Notification::create([
+                    'user_id' => $this->post->user_id,
+                    'type' => 'comment',
+                    'data' => json_encode(
+                        
+                        [
+                            'post_id' => $this->post->id,
+                            "message" => auth()->user()->username." commented your post: ".$this->post->title,
+                            ]
+                        ),
+                        'read_at' => null,
+                    ]);
+                }
+            }
  
          //store comment
 
-        $user_id = auth()->id();
         
         $this->validate();
         Comment::create([
