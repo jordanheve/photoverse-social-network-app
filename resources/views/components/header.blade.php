@@ -7,23 +7,27 @@
                 <x-heroicon-o-bars-3 class=" h-8" />
             </button>
         </x-slot>
-        <div x-cloak class="absolute w-32 p-4 bg-zinc-50 shadow" id="menu">
-            <a  href="#">
-               <p class="border-b">
-                   Home
-               </p>
-                   
+        <div x-cloak class="absolute w-36 p-4 bg-zinc-50 shadow text-zinc-500 gap-4 flex flex-col" id="menu" >
+            <a href="{{route('feed')}}" class="flex items-center gap-2 hover:bg-zinc-200">
+                <x-heroicon-m-home class="h-4 ml-1 -mb-0.5" />
+                Home
             </a>
-            <a href="#">Profile</a>
-            <a href="#" class="flex items-center">
-                <x-heroicon-m-cog-6-tooth class="h-4 inline-block" />
+            <a href="{{route('user.index', auth()->user())}}" class="flex items-center gap-2 hover:bg-zinc-200">
+                <x-heroicon-s-user class="h-4  ml-1 -mb-0.5 " />
+                Profile
+            </a>
+            <a  href="{{route('edit.index')}}" class="flex items-center gap-2 hover:bg-zinc-200">
+                <x-heroicon-m-pencil-square class="h-4  ml-1 -mb-0.5" />
                 Edit profile
             </a>
-            <a href="#" class="flex items-center">
-                <x-heroicon-m-cog-6-tooth class="h-4 inline-block" />
+            <a href="{{route('settings.index')}}" class="flex items-center gap-2 hover:bg-zinc-200">
+                <x-heroicon-m-cog-6-tooth class="h-4  ml-1 -mb-0.5 " />
                 Settings
             </a>
-            <x-logout action="{{route('logout')}}" class="text-gray-500" />
+                <x-logout action="{{route('logout')}}" class="flex items-center gap-2 hover:bg-zinc-200 w-full" >
+                    <x-heroicon-m-arrow-left-on-rectangle class="h-4 ml-1 -mb-0.5" />
+                    Log Out
+                </x-logout>
         </div>
     </x-dropdown>
     <a href="{{route('user.index', auth()->user())}}">

@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserviewController;
 
 /*
@@ -34,6 +35,7 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
 
 Route::middleware('auth')->group(function (){
+    Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
     Route::get('/edit-profile', [EditProfileController::class, 'index'])->name('edit.index');
     Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
     Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy') ;
