@@ -42,6 +42,9 @@
         </span>
     </a>
     <livewire:user-search   />  
+
+   <livewire:notifications/>
+
     @endauth
 
     @guest

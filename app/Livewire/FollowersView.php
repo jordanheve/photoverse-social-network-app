@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\User;
 use Livewire\Component;
+use App\Models\Notification;
 use Livewire\WithPagination;
 
 class FollowersView extends Component
@@ -36,6 +37,26 @@ class FollowersView extends Component
 
     public function store($follower_id)
     {   
+
+        
+         //store notification
+ 
+ 
+         Notification::create([
+            'user_id' => $this->user->id,
+            'type' => 'follow',
+            'data' => json_encode(
+
+                [
+                    "user_id" => auth()->id(),
+                    "message" => auth()->user()->username." is following you",
+                ]
+            ),
+            'read_at' => null,
+        ]);
+ 
+         //store follow
+
         
         if(auth()->id() === $this->user->id)
         { 

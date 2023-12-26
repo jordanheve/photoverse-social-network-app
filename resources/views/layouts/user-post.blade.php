@@ -46,7 +46,7 @@
         
         
         <div class="md:w-1/2 p-5 bg-white">
-            <livewire:comments :post_id='$post->id'/>
+            <livewire:comments :post='$post'/>
 
            
         </div>

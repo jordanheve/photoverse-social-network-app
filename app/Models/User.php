@@ -69,4 +69,9 @@ class User extends Authenticatable
     {   
         return $this->followers->contains($user->id);
     }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
 }

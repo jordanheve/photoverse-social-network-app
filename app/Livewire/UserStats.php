@@ -2,9 +2,10 @@
 
 namespace App\Livewire;
 
-use App\Models\Follower;
-use Livewire\Component;
 use App\Models\User;
+use Livewire\Component;
+use App\Models\Follower;
+use App\Models\Notification;
 
 class UserStats extends Component
 {
@@ -32,7 +33,26 @@ public $user;
 
     public function store()
     {   
-        
+          
+         //store notification
+       
+ 
+         Notification::create([
+            'user_id' => $this->user->id,
+            'type' => 'follow',
+            'data' => json_encode(
+
+                [
+                    "user_id" => auth()->id(),
+                    "message" => auth()->user()->username." is following you",
+                ]
+            ),
+            'read_at' => null,
+        ]);
+ 
+         //store follow
+
+
         $this->userFind->followers()->attach($this->follower_id);
         $this->updateFollowersCount();
         

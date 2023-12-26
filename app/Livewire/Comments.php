@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Comment;
 use Livewire\Component;
+use App\Models\Notification;
 use Livewire\WithPagination;
 
 class Comments extends Component
@@ -12,11 +13,13 @@ class Comments extends Component
 
     public $comment;
     public $user_id;
-    public $post_id;
+    public $post;
 
     public function render()
     {
-        $comments = Comment::where('post_id', $this->post_id)
+       
+
+        $comments = Comment::where('post_id', $this->post->id)
         ->orderBy('created_at', 'desc')
         ->paginate(5);
         
@@ -31,12 +34,45 @@ class Comments extends Component
 
     public function store()
     {
+
+         //store comment notification
+
+         $existingNotification = Notification::where('type', 'comment')
+         ->where('user_id', $this->post->user_id)
+         ->first();
+ 
+ 
+         if($existingNotification)
+         {
+             $existingNotification->data = json_encode([
+                     "post_id" => "$this->post->id",
+                     
+                     "message" => auth()->user()->username."and some others commented your post: ".$this->post->title,
+                 ]);
+             $existingNotification->save();
+         } else {
+             Notification::create([
+                 'user_id' => $this->post->user_id,
+                 'type' => 'comment',
+                 'data' => json_encode(
+ 
+                     [
+                         'post_id' => $this->post->id,
+                         "message" => auth()->user()->username." commented your post: ".$this->post->title,
+                     ]
+                 ),
+                 'read_at' => null,
+             ]);
+         }
+ 
+         //store comment
+
         $user_id = auth()->id();
         
         $this->validate();
         Comment::create([
             'user_id'=> $user_id,
-            'post_id' => $this->post_id,
+            'post_id' => $this->post->id,
             'comment' => $this->comment,
         ]);
 

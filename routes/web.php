@@ -36,8 +36,8 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
 Route::middleware('auth')->group(function (){
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
-    Route::get('/edit-profile', [EditProfileController::class, 'index'])->name('edit.index');
     Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+    Route::get('/edit-profile', [EditProfileController::class, 'index'])->name('edit.index');
     Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy') ;
 });
 
