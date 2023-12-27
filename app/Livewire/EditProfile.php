@@ -80,8 +80,7 @@ class EditProfile extends Component
         $user->name = $this->name;
         $user->description = $this->description;
         $user->save();
-        
-        return redirect()->route('user.index', $user->username);
+        $this->dispatch('userUpdated', ["userProfile" => route('user.index', $user->username)] );
     }
 }
 

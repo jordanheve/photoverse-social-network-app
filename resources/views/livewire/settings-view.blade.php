@@ -26,11 +26,7 @@
             <!-- Update button -->
             <x-register-button type='submit'>Update</x-register-button>
             <!--Success mesage-->
-            @if(session('profile_message')) 
-    <div class="bg-green-200 text-center text-green-600 capitalize " >
-        {{ session('profile_message') }}
-    </div>
-    @endif
+           
         </div>
     </form>
 
@@ -69,11 +65,33 @@
             <!-- Update password button -->
             <x-register-button type='submit'>Update Password</x-register-button>
                 <!--Success mesage-->
-            @if(session('password_message')) 
-    <div class="bg-green-200 text-center text-green-600 capitalize " >
-        {{ session('password_message') }}
-    </div>
-    @endif
+            
         </div>
     </form>
 </div>
+
+@script
+
+<script>
+    $wire.on('updatedProfile', ()=>{
+        Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "User data updated successfully!",
+        showConfirmButton: false,
+        timer: 3000
+});
+    });
+
+    $wire.on('updatedPassword', ()=>{
+        Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Password updated successfully!",
+        showConfirmButton: false,
+        timer: 3000
+});
+    });
+</script>
+    
+@endscript

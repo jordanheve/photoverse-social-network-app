@@ -77,7 +77,6 @@
                 <x-register-button type='submit'>Save Changes</x-register-button>
             
             </div>
-           <p class="text-xs text-slate-500">Update password here</p>
             
         </div>
        
@@ -86,3 +85,24 @@
 
 
 </div>
+
+@script
+<script>
+    $wire.on('userUpdated', (username)=>{
+        Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "User data updated successfully!",
+        showConfirmButton: true,
+        timer: 3000
+});
+
+setTimeout(() => {
+        window.location.href= username[0]['userProfile']
+    }, 3000);
+
+    });
+
+</script>
+
+@endscript

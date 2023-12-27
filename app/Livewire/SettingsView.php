@@ -61,7 +61,8 @@ class SettingsView extends Component
         $user->phone = $this->phone;
         $user->email = $this->email;
         $user->save();
-        session()->flash('profile_message', 'Personal data updated successfully!');
+
+        $this->dispatch('updatedProfile');
    }
 
    public function updatePassword()
@@ -80,7 +81,7 @@ class SettingsView extends Component
         $this->new_password = '';
         $this->new_password_repeat = '';
 
-        session()->flash('password_message', 'Password updated successfully!');
+        $this->dispatch('updatedPassword');
    }
 
 
