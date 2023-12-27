@@ -33,3 +33,21 @@
     </form>
 
 </div>
+
+@script
+<script>
+
+$wire.on('emailSent', ()=>{
+        Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Email sent!",
+        text: "An email has been sent to you with instructions to reset your password. Please check your inbox.",
+        showConfirmButton: true,
+});
+
+    });
+
+</script>
+
+@endscript

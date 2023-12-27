@@ -10,6 +10,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserviewController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Livewire\ForgotPassword;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,11 +26,13 @@ use App\Http\Controllers\ForgotPasswordController;
 
 
 Route::redirect('/', '/home'); 
-
+Route::get('/forgot-password/{token}',[ForgotPasswordController::class, 'passwordReset']);
 Route::middleware('guest')->group(function () {  
     Route::get('/sign-up', [RegisterController::class, 'index'])->name('sign-up');
     Route::get('/login', [LoginController::class, 'index'])->name('login');
 });
+
+
 
 Route::get('/home', [FeedControler::class, 'index'])->name('feed');
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');

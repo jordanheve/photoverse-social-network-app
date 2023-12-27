@@ -113,7 +113,7 @@ class ForgotPassword extends Component
         ]);
        
 
-
+        $this->dispatch('emailSent');
 
     }
 }
