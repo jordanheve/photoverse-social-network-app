@@ -45,6 +45,10 @@
 
    <livewire:notifications/>
 
+   <a href="{{route('explore.index')}}" title="explore">
+    <x-heroicon-o-globe-asia-australia class="h-6" />
+   </a>
+
     @endauth
 
     @guest

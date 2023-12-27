@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EditProfileController;
+use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\FeedControler;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -39,6 +40,7 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
 
 Route::middleware('auth')->group(function (){
+    Route::get('/explore', [ExploreController::class, 'index'])->name('explore.index');
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
     Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
     Route::get('/edit-profile', [EditProfileController::class, 'index'])->name('edit.index');

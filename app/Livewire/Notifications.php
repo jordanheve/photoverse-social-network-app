@@ -29,7 +29,7 @@ class Notifications extends Component
     public function markAsRead()
     {
         if ($this->unreadNotificationsCount) {
-          //  dd("hola mundo");
+         
             Notification::where('user_id', $this->user->id)->whereNull("read_at")->update(["read_at" => now()]);
 
             $this->unreadNotificationsCount = 0;
