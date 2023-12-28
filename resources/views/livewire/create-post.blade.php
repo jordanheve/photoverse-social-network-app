@@ -1,5 +1,5 @@
-<form wire:submit.prevent="store" novalidate class="flex items-center gap-10 m-4">
-    <div class="w-96">
+<form wire:submit.prevent="store" novalidate class="flex max-lg:flex-col items-center gap-10 m-4 justify-center container mx-auto">
+    <div class="w-full max-w-md">
 
         
         <x-filepond wire:model='image'/>
@@ -8,8 +8,8 @@
         @enderror
 </div>
 
-    <div>
-        <div class="border p-6 max-w-md w-96  gap-2 flex flex-col">
+    <div class="max-w-md w-full ">
+        <div class="border p-6  gap-2 flex flex-col">
             
         
             <div>

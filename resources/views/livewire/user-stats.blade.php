@@ -1,6 +1,6 @@
 <div>
     <div class="flex justify-between gap-6">
-        <p class="font-semibold">{{$user->username}}</p>
+        <p class="font-semibold text-slate-800">{{$user->username}}</p>
 
         @auth
         @if ($user->id !== auth()->id())
@@ -92,7 +92,7 @@
 
         
     </div>
-    <p>{{$user->name}}</p>
+    <p class="text-slate-800">{{$user->name}}</p>
     <div class="max-w-xs text-xs text-zinc-500 italic">
         @if (auth()->id() ===  $user->id && !$user->description)
         <p >Your profile description is currently empty.

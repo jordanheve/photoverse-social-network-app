@@ -1,8 +1,8 @@
-<div >
+<div class="relative">
     <x-dropdown >
         <x-slot name='trigger'>
-            <button wire:click="markAsRead" aria-label="notifications" title="notifications" class="relative mt-1 pt-0.5">
-                <x-heroicon-o-bell class="h-6"/>
+            <button wire:click="markAsRead" aria-label="notifications" title="notifications" class="relative mt-1 pt-0.5 hover:bg-slate-200 rounded-full p-1">
+                <x-heroicon-o-bell class="h-6 text-slate-700 "/>
                 @if ($unreadNotificationsCount)
                 <span  class="bg-red-500 rounded-full text-xs px-1 text-zinc-50 absolute top-0 font-semibold">
                     {{$unreadNotificationsCount}}
@@ -10,7 +10,7 @@
                 @endif
             </button>
         </x-slot>
-        <div x-cloak class="absolute bg-zinc-50 shadow-md p-2 z-50">
+        <div x-cloak class="absolute max-md:right-0 bg-zinc-50 shadow-md max-md:w-screen md:min-w-max max-w-xs p-2 z-50">
             @forelse ($notifications as $notification )
             @php
             $notificationData = json_decode($notification->data, true);
@@ -65,7 +65,10 @@
 
                 @endif
                 @empty
-                No hay notificaciones que mostrar
+                <p class="text-zinc-700">
+                    No new notifications right now. Enjoy the quiet moment!
+
+                </p>
                 @endforelse
                 @if ($notifications->count())
                 <form wire:submit.prevent="destroy" class="flex justify-center" method="POST">

@@ -1,16 +1,17 @@
-<div class="bg-white">
+<div class="bg-white ">
+    <p class="text-xl text-center mb-4  text-slate-800 font-semibold">
+        Comments
+    </p>
     @auth
         
-    <p class="text-xl text-center mb-4   font-semibold">
-        Add a new comment
-    </p>
+    
     
     <form wire:submit.prevent="store">
         <x-custom-textarea
         name="comment" 
         id="comment" 
-        placeholder="comment" 
-        ariaLabel="comment"
+        placeholder="add a new comment" 
+        ariaLabel="add a new comment"
         required
         />
         <x-register-button type='submit'>Comment</x-register-button>
@@ -22,8 +23,8 @@
 
         @foreach($comments as $comment)
         
-            <div class="border-b py-2 ">
-                <p class="font-semibold">
+            <div class="border-b py-2 text-slate-800">
+                <p class="font-semibold ">
                     <a href="{{route('user.index',  $comment->user)}}">
                         {{$comment->user->username}}
                     </a>
@@ -36,7 +37,7 @@
             {{ $comments->links() }}
         </div>
     @else
-            <p>No hay comentarios</p>
+            <p class="text-center text-zinc-400 italic my-10">No comments yet</p>
     @endif
     
     </div>

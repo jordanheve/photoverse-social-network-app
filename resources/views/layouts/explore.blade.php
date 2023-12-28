@@ -8,7 +8,7 @@
 <div class="grid xl:grid-cols-5 grid-cols-3 mx-auto">
 
     @forelse ($posts as $post )
-    <div class="m-1">
+    <div class="lg:m-1 m-0.5 max-w-xs">
         <x-post-preview  :post="$post" />
     </div>
     @empty

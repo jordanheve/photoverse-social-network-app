@@ -65,8 +65,11 @@
             <!-- Update password button -->
             <x-register-button type='submit'>Update Password</x-register-button>
                 <!--Success mesage-->
-            
+                <p class="text-center">
+                    <a href="{{route('forgot-password.index')}}" class=" text-xs underline">Forgot password?</a>
+                </p>
         </div>
+        
     </form>
 </div>
 

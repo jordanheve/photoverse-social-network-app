@@ -1,11 +1,12 @@
 <div >
 
 
-    <form wire:submit.prevent="store" novalidate class="flex justify-center items-center gap-10 m-4">
-        <div class="w-96">
-            <h2>Profile picture</h2>
+    <h2 class="text-4xl font-semibold text-center text-slate-800 my-2">Edit Profile</h2>
+    <form wire:submit.prevent="store" novalidate class="flex justify-center items-center gap-10 m-4 max-lg:flex max-lg:flex-col">
+        <div class="w-full max-w-md">
             
-            <p>Current profile picture</p>
+            
+            <p class="text-slate-800 font-semibold text-center my-2">Current profile picture</p>
 
             @if (auth()->user()->image)
                 
@@ -13,15 +14,15 @@
             @else
             <img src="/img/profile-picture.png" class="rounded-full objet-cover h-40 w-40" alt="profile picture">
             @endif
-            <p>update</p>
+            <p class="text-slate-800 font-semibold text-center mb-2 mt-3">Update profile picture here</p>
             <x-filepond wire:model='image'/>
             @error('image')
             <x-alert-message> {{$message}}</x-alert-message>
             @enderror
     </div>
     
-        <div>
-            <div class="border p-6 max-w-md w-96  gap-2 flex flex-col">
+        <div class="w-full max-w-md">
+            <div class="border p-6  gap-2 flex flex-col">
                 
             
                 <div>

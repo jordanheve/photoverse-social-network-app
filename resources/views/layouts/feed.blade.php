@@ -6,28 +6,16 @@
 
 @section('content')
 <main class="flex flex-col items-center flex-grow py-4">
-
+    <h2 class="text-3xl font-semibold text-center text-slate-800 mb-6">Home Page</h2>
    @forelse ($posts as  $post)
-        <div class="bg-zinc-200">
+        <div class=" md:max-w-lg max-w-xs mx-4 ">
             <x-post-preview  :post="$post" />
-            <a href="{{route('user.index', $post->user)}}">
-
-                <p class="font-semibold">{{$post->user->username}}</p>
-            </a>
-            <p>
-                {{$post->created_at->diffForHumans()}}
-             </p>
-            <p>
-                <span >
-                    {{$post->likes->count()}}
-                </span> 
-                {{ \Illuminate\Support\Str::plural('like', $post->likes->count() )}}    
-            </p>
+           
         </div>
        
 
    @empty
-        <p class="font-bold text-4xl">No posts to show</p>
+        <p class="font-bold text-4xl">No posts to show follow someone</p>
    @endforelse
 
    <div class="mt-4">

@@ -17,8 +17,8 @@
     </form>
     @endif
     @endauth
-    <p>
-        <span class="font-semibold">{{$post->likes->count()}}</span>
+    <p class="text-slate-800">
+        <span class="font-semibold ">{{$post->likes->count()}}</span>
         @if($post->likes->count() === 1)
         Like
         @else

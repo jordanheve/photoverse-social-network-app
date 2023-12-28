@@ -1,5 +1,5 @@
 
-    <a href="{{ route('user.index', $user) }}" class="flex gap-4 ">
+    <a href="{{ route('user.index', $user) }}" class="flex gap-4 my-2 ">
         <div>
             @if($user->image)
                 <img class="rounded-full h-12 w-12 object-cover" src="{{ asset('storage/uploads/' . $user->id . '/profile/' . $user->image) }}" alt="{{ 'user ' . $user->username . ' profile picture' }}">
