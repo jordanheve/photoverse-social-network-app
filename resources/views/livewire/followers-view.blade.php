@@ -45,7 +45,9 @@
         @endforeach
     
     @else
-    <p>No followers yet</p>
+    <p class="text-center">No followers yet</p>
     @endif
-
+    <div class="mt-4">
+        {{$followers->links('pagination::tailwind')}}
+    </div>
 </div>

@@ -12,7 +12,7 @@
                 
             <img class="rounded-full h-40 w-40 object-cover mx-auto" src="{{asset('storage').'/uploads'.'/'.auth()->id().'/'.'profile/'.auth()->user()->image}}" alt="profile picture">
             @else
-            <img src="/img/profile-picture.png" class="rounded-full objet-cover h-40 w-40" alt="profile picture">
+            <img src="/img/profile-picture.png" class="rounded-full objet-cover mx-auto h-40 w-40" alt="profile picture">
             @endif
             <p class="text-slate-800 font-semibold text-center mb-2 mt-3">Update profile picture here</p>
             <x-filepond wire:model='image'/>

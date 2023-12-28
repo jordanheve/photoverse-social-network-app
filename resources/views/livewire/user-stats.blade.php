@@ -55,7 +55,7 @@
                 </button>
             </x-slot>
 
-            <div x-cloak class="  absolute top-1/2 -translate-y-1/2 translate-x-1/2 right-1/2 modal z-50  bg-zinc-50 border rounded-lg shadow-lg w-96 ">
+            <div x-cloak class="  absolute top-1/2 -translate-y-1/2 translate-x-1/2 right-1/2 modal z-50  bg-zinc-50 border rounded-lg shadow-lg max-w-sm w-full  ">
                 <div class="relative flex flex-col  border-b h-10">
                     <button @click='open = false'>
                         <x-heroicon-s-x-mark class="h-6 absolute top-2 right-2" />
@@ -77,7 +77,7 @@
                 </button>
             </x-slot>
 
-            <div x-cloak class="  absolute top-1/2 -translate-y-1/2 translate-x-1/2 right-1/2 modal z-50  bg-zinc-50 border rounded-lg shadow-lg w-96 ">
+            <div x-cloak class="  absolute top-1/2 -translate-y-1/2 translate-x-1/2 right-1/2 modal z-50  bg-zinc-50 border rounded-lg shadow-lg max-w-sm w-full ">
                 <div class="relative flex flex-col  border-b h-10">
                     <button @click='open = false'>
                         <x-heroicon-s-x-mark class="h-6 absolute top-2 right-2" />

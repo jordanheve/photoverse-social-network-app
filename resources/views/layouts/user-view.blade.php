@@ -6,7 +6,7 @@
 
 @section('content')
 <div class='flex-grow flex-col flex items-center' >
-    <div class="flex items-center gap-4 p-4 relative">
+    <div class="flex items-center gap-4 p-4 ">
         
         <div class="h-28 w-28">
             <!--user img-->
@@ -23,7 +23,7 @@
 
         @auth
         @if($user->id===auth()->id())
-            <a href="{{route('edit.index')}}" title="edit profile" class="absolute top-4 right-4">
+            <a href="{{route('edit.index')}}" title="edit profile" >
                 <x-heroicon-m-pencil-square class="text-slate-500 h-5" />
             </a>
         @endif
@@ -47,7 +47,7 @@
             <figure class="rounded-lg  relative aspect-square max-w-sm w-full h-full overflow-hidden transition-all duration-300 cursor-pointer group z-20">
                 <div class="relative h-full">
                   <div class='bg-gradient-to-t from-black opacity-50 to-30% h-full w-full absolute z-10'></div>
-                    <img class="rounded-lg object-cover h-full transform transition duration-300 ease-in-out group-hover:scale-110" src="{{asset('storage').'/uploads'.'/'.$user->id.'/'.$post->image}}" alt="image description">
+                    <img class="rounded-lg object-cover w-full h-full transform transition duration-300 ease-in-out group-hover:scale-110" src="{{asset('storage').'/uploads'.'/'.$user->id.'/'.$post->image}}" alt="{{$post->title}} picture">
                     <figcaption class="absolute px-4 text-lg text-white bottom-6 z-20">
                         <p>{{$post->title}}</p>
                     </figcaption>
