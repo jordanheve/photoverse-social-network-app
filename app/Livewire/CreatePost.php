@@ -30,20 +30,11 @@ class CreatePost extends Component
 
         $this->validate();
 
-        $user_id = auth()->id();
-
-       
-        $userFolder = 'public/uploads/' . $user_id;
-
-        
-        if (!Storage::exists($userFolder)) {
-            Storage::makeDirectory($userFolder);
-        }
-
+  
 
         $uniqueFileName = Str::uuid()->toString() . '.' . $this->image->getClientOriginalExtension();
         
-         $this->image->storeAs($userFolder, $uniqueFileName);
+         $this->image->storeAs('public', $uniqueFileName);
 
  
        

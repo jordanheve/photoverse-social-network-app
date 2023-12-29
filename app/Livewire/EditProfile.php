@@ -56,22 +56,17 @@ class EditProfile extends Component
     {
         $this->validate($this->rules());
         $user = User::find(auth()->user()->id);
-        $userFolder = 'public/uploads/' . Auth::id() . "/profile";
         if($this->image)
         {
-            if (!Storage::exists($userFolder)) {
-                Storage::makeDirectory($userFolder);
-            }
-    
             // Eliminar la imagen anterior, si existe
             if ($user->image) {
-                Storage::delete($userFolder . '/' . $user->image);
+                Storage::delete('public/' . $user->image);
             }
     
-            $fileName = 'profileAvatar.' . $this->image->getClientOriginalExtension();
-            Storage::putFileAs($userFolder, $this->image, $fileName);
+            $uniqueFileName = Str::uuid()->toString() . '.' . $this->image->getClientOriginalExtension();;
+            Storage::putFileAs('public', $this->image, $uniqueFileName);
     
-            $user->image = $fileName;
+            $user->image = $uniqueFileName;
             $user->save();
             $this->image->delete();
         }

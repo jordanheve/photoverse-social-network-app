@@ -12,7 +12,7 @@
     <div class="mx-auto container shadow flex max-lg:flex-col">   
         
         <div class="lg:w-1/2">
-            <img src="{{asset('storage').'/uploads'.'/'.$user->id.'/'.$post->image}}" alt="">
+            <img src="{{asset('storage').'/'.$post->image}}" alt="">
             
             
             

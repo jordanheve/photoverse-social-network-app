@@ -8,10 +8,10 @@
 <div class='flex-grow flex-col flex items-center' >
     <div class="flex items-center gap-4 p-4 ">
         
-        <div class="h-28 w-28">
+        <div class="h-20 w-20 md:h-28 md:w-28 aspect-square">
             <!--user img-->
             @if ($user->image)
-                <img class="h-full w-full rounded-full object-cover mx-auto" src="{{asset('storage').'/uploads'.'/'.$user->id.'/'.'profile/'.$user->image}}" alt="profile picture">
+                <img class="h-full w-full rounded-full object-cover mx-auto" src="{{ asset('storage').'/'. $user->image }}" alt="profile picture">
             @else
 
             <img src="/img/profile-picture.png" class="rounded-full objet-cover" alt="profile picture">
@@ -47,7 +47,7 @@
             <figure class="rounded-lg  relative aspect-square max-w-sm w-full h-full overflow-hidden transition-all duration-300 cursor-pointer group z-20">
                 <div class="relative h-full">
                   <div class='bg-gradient-to-t from-black opacity-50 to-30% h-full w-full absolute z-10'></div>
-                    <img class="rounded-lg object-cover w-full h-full transform transition duration-300 ease-in-out group-hover:scale-110" src="{{asset('storage').'/uploads'.'/'.$user->id.'/'.$post->image}}" alt="{{$post->title}} picture">
+                    <img class="rounded-lg object-cover w-full h-full transform transition duration-300 ease-in-out group-hover:scale-110"  src="{{asset('storage').'/'.$post->image}}"   alt="{{$post->title}} picture">
                     <figcaption class="absolute px-4 text-lg text-white bottom-6 z-20">
                         <p>{{$post->title}}</p>
                     </figcaption>

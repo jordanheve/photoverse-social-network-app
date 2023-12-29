@@ -15,7 +15,7 @@
        
 
    @empty
-        <p class="font-bold text-4xl">No posts to show follow someone</p>
+        <p class="font-bold text-2xl text-slate-600 text-center">No posts to show follow someone</p>
    @endforelse
 
    <div class="mt-4">

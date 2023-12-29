@@ -31,6 +31,6 @@
                         <a href="https://jordanheve.github.io/portfolio/" target="_blank" rel="noreferrer">by  JordanHeve</a>
                     </div>
                 </footer>
-        @livewireScripts
+                @livewireScripts
     </body>
 </html>
