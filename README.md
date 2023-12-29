@@ -1,6 +1,6 @@
 # SocialApp
 
-SocialApp is a web-based social networking application inspired by Instagram, built with the Laravel PHP framework and styled using Tailwind CSS.
+SocialApp is a web-based social networking application inspired by Instagram, built with the Laravel PHP framework and styled using Tailwind CSS
 
 
 ## Features
